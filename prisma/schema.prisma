@@ -1,0 +1,82 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Post {
+  id             String          @id @default(cuid())
+  title          String
+  slug           String          @unique
+  content        String          @db.Text
+  coverImage     String?
+  tags           String[]
+  status         PostStatus      @default(DRAFT)
+  viewsCount     Int             @default(0)
+  likesCount     Int             @default(0)
+  dislikesCount  Int             @default(0)
+  isFeatured     Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  
+  comments       Comment[]
+  engagements    PostEngagement[]
+  analytics      PostAnalytics[]
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  content   String   @db.Text
+  authorId  String?  // Firebase User ID or null for anonymous
+  ipAddress String?  // Optional IP tracking for anonymous moderation
+  createdAt DateTime @default(now())
+}
+
+model PostEngagement {
+  id        String         @id @default(cuid())
+  postId    String
+  post      Post           @relation(fields: [postId], references: [id], onDelete: Cascade)
+  ipAddress String         // Hashed IP to prevent double vote for anonymous users
+  type      EngagementType
+  createdAt DateTime       @default(now())
+
+  @@unique([postId, ipAddress, type])
+}
+
+enum EngagementType {
+  LIKE
+  DISLIKE
+}
+
+model PostAnalytics {
+  id             String   @id @default(cuid())
+  postId         String
+  post           Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  views          Int      @default(0)
+  uniqueVisitors Int      @default(0)
+  timestamp      DateTime @default(now())
+}
+
+// User role management can be handled via Custom Claims in Firebase,
+// but we keep a local synched record if we need to expand fields later.
+model User {
+  id    String @id @default(cuid())
+  email String @unique
+  role  Role   @default(ADMIN)
+}
+
+enum Role {
+  ADMIN
+  USER
+}
