@@ -1,3 +1,5 @@
+# it is edited for the github (actual implementation vary)
+
 terraform {
   required_providers {
     aws = {
