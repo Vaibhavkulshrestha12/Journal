@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useOptimistic, useTransition } from "react";
+import { useState, useOptimistic, useTransition, useEffect } from "react";
 import { ThumbsUp, ThumbsDown, MessageSquare, Share2, Send, User } from "lucide-react";
+import hljs from 'highlight.js';
+import 'highlight.js/styles/vs2015.css';
 
 interface Post {
   id: string;
@@ -27,6 +29,12 @@ export default function PostReadingView({ post }: { post: Post }) {
   const [comments, setComments] = useState(post.comments || []);
   const [commentLoading, setCommentLoading] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
+
+  useEffect(() => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block as HTMLElement);
+    });
+  }, [post.content]);
 
   const handleEngage = async (type: "LIKE" | "DISLIKE") => {
     if (engageLoading) return;

@@ -12,10 +12,11 @@ import { createLowlight, common } from "lowlight";
 const lowlight = createLowlight(common);
 import { 
   Bold, Italic, List, ListOrdered, Code, Image as LucideImage, 
-  Heading1, Heading2, Link as LinkIcon 
+  Heading1, Heading2, Link as LinkIcon, Smile
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import EmojiPicker, { Theme } from "emoji-picker-react";
 
 interface EditorProps {
   content: string;
@@ -24,6 +25,8 @@ interface EditorProps {
 }
 
 const MenuBar = ({ editor, onImageUpload }: { editor: any, onImageUpload?: (file: File) => Promise<string> }) => {
+  const [showEmoji, setShowEmoji] = useState(false);
+
   if (!editor) return null;
 
   const addImage = () => {
@@ -97,6 +100,22 @@ const MenuBar = ({ editor, onImageUpload }: { editor: any, onImageUpload?: (file
       <Button variant="ghost" size="sm" onClick={addImage}>
         <LucideImage className="w-4 h-4" />
       </Button>
+      <div className="relative">
+        <Button variant="ghost" size="sm" onClick={() => setShowEmoji(!showEmoji)}>
+          <Smile className="w-4 h-4" />
+        </Button>
+        {showEmoji && (
+          <div className="absolute top-10 right-0 z-50 shadow-2xl">
+            <EmojiPicker 
+              theme={Theme.DARK} 
+              onEmojiClick={(emojiData) => {
+                editor.chain().focus().insertContent(emojiData.emoji).run();
+                setShowEmoji(false);
+              }} 
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
