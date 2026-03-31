@@ -34,7 +34,18 @@ export default function PostReadingView({ post }: { post: Post }) {
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block as HTMLElement);
     });
-  }, [post.content]);
+
+    // Fetch up-to-date counts and user's past engagement
+    fetch(`/api/posts/engage?postId=${post.id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.type === 'LIKE') setLikeActive(true);
+        if (data.type === 'DISLIKE') setDislikeActive(true);
+        if (data.likesCount !== undefined) setLikes(data.likesCount);
+        if (data.dislikesCount !== undefined) setDislikes(data.dislikesCount);
+      })
+      .catch(() => {});
+  }, [post.content, post.id]);
 
   const handleEngage = async (type: "LIKE" | "DISLIKE") => {
     if (engageLoading) return;
@@ -67,11 +78,14 @@ export default function PostReadingView({ post }: { post: Post }) {
     }
 
     try {
-      await fetch("/api/posts/engage", {
+      const res = await fetch("/api/posts/engage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ postId: post.id, type }),
       });
+      const data = await res.json();
+      if (data.likesCount !== undefined) setLikes(data.likesCount);
+      if (data.dislikesCount !== undefined) setDislikes(data.dislikesCount);
     } catch {
     } finally {
       setEngageLoading(false);
