@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "JOURNAL. Digital Frontier",
   description: "Thoughts on code, design, and building production-grade systems. No noise, just high-fidelity insights.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {

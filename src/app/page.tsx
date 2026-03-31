@@ -4,6 +4,7 @@ import Image from "next/image";
 import { formatNumber } from "@/lib/utils";
 import { Eye } from "lucide-react";
 import DecryptedText from "@/components/ui/DecryptedText";
+import MobileNav from "@/components/layout/MobileNav";
 
 export default async function HomePage() {
   const latestPosts = await prisma.post.findMany({
@@ -28,8 +29,13 @@ export default async function HomePage() {
             <span className="text-xl font-extrabold italic tracking-tighter hidden sm:inline">JOURNAL<span className="text-zinc-600">.</span></span>
           </Link>
           <div className="flex items-center gap-4 sm:gap-8 text-[11px] uppercase tracking-[0.2em] font-bold text-zinc-500">
-            <Link href="/posts" className="hover:text-white transition-colors">Archive</Link>
-            <Link href="https://www.vaibhavkulshrestha.me/about" className="hover:text-white transition-colors hidden sm:inline">About</Link>
+            <div className="hidden sm:flex items-center gap-8">
+              <Link href="/posts" className="hover:text-white transition-colors">Archive</Link>
+              <Link href="https://www.vaibhavkulshrestha.me/about" className="hover:text-white transition-colors">About</Link>
+            </div>
+            <div className="sm:hidden flex items-center">
+              <MobileNav />
+            </div>
           </div>
         </div>
       </nav>

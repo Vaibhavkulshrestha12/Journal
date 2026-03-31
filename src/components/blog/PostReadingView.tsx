@@ -142,14 +142,14 @@ export default function PostReadingView({ post }: { post: Post }) {
 
       <div
         className="
-          prose prose-invert max-w-none mb-16
+          prose prose-invert max-w-full w-full mb-16 break-words
           prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white
           prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
           prose-p:text-zinc-300 prose-p:leading-[1.8] prose-p:text-base
           prose-a:text-white prose-a:underline prose-a:underline-offset-4
           prose-strong:text-white
-          prose-code:text-zinc-300 prose-code:bg-zinc-800/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-          prose-pre:bg-[#1e1e1e] prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl prose-pre:overflow-x-auto
+          prose-code:text-zinc-300 prose-code:bg-zinc-800/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:break-words
+          prose-pre:bg-[#1e1e1e] prose-pre:border prose-pre:border-zinc-800 prose-pre:rounded-xl prose-pre:max-w-full prose-pre:overflow-x-auto
           prose-img:rounded-xl prose-img:border prose-img:border-zinc-800
           prose-blockquote:border-l-white/30 prose-blockquote:text-zinc-400
           prose-li:text-zinc-300
@@ -204,18 +204,18 @@ export default function PostReadingView({ post }: { post: Post }) {
         <h3 className="text-lg font-bold tracking-tight text-white">
           Discussion ({comments.length})
         </h3>
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3 w-full max-w-full">
           <input
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleComment()}
             placeholder="Share your thoughts..."
-            className="flex-1 h-11 px-4 bg-zinc-900 border border-zinc-800 rounded-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 transition-colors"
+            className="flex-1 min-w-0 h-11 px-3 sm:px-4 bg-zinc-900 border border-zinc-800 rounded-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 transition-colors"
           />
           <button
             onClick={handleComment}
             disabled={commentLoading || commentText.length < 3}
-            className="h-11 px-5 bg-white text-black rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+            className="h-11 px-4 sm:px-5 shrink-0 bg-white text-black rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <Send className="w-4 h-4" />
           </button>
