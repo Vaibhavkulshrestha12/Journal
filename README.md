@@ -31,5 +31,5 @@ This is a full-stack implementation balancing speed with data durability:
 *   **Database**: PostgreSQL via AWS RDS, managed with Prisma ORM.
 *   **Styling**: Modern CSS via Tailwind and Shadcn/UI for a consistent, premium aesthetic.
 *   **Storage**: AWS S3 for all blog media and assets.
-*   **Authentication**: Secure admin access via NextAuth.
+*   **Authentication**: Secure admin access via NextAuth (aws cognito).
 *   **Deployment**: Vercel for the frontend edge, with Terraform managing the underlying AWS infrastructure.
