@@ -25,7 +25,6 @@ export async function GET(
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
 
-    // Proactively track a view (in a real app, this might be debounced or handled differently)
     await prisma.post.update({
       where: { slug },
       data: { viewsCount: { increment: 1 } },

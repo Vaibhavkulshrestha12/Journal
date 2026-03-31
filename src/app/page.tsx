@@ -38,7 +38,7 @@ export default async function HomePage() {
         {/* Hero Section */}
         <section className="space-y-6 sm:space-y-8">
           <div className="space-y-4">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">Independent Journal since 2026</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">Shitposting my thoughts since 2026</span>
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-[-0.04em] leading-[0.95]">
               <DecryptedText 
                 text="Exploring the"
@@ -59,7 +59,7 @@ export default async function HomePage() {
           </div>
           <p className="max-w-xl text-zinc-400 text-base sm:text-lg leading-relaxed">
             Thoughts on code, design, and building production-grade systems in the age of agentic AI. 
-            No noise, just high-fidelity insights.
+            No noise, just high fidelity insights of an unemployed engineer.
           </p>
         </section>
 
@@ -128,7 +128,7 @@ export default async function HomePage() {
               <h2 className="text-xl font-extrabold tracking-tighter italic">JOURNAL.</h2>
             </div>
             <p className="text-zinc-600 text-xs sm:text-sm uppercase tracking-widest font-bold leading-relaxed max-w-xs">
-              Built for the digital age <br /> Focused on premium quality.
+              Built by Mai yani <strong>Vaibhav</strong> <br /> Focused on even I don't know what.
             </p>
           </div>
           <div className="flex gap-8 sm:gap-12 text-[10px] uppercase tracking-widest font-bold text-zinc-500">

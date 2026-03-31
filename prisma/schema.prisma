@@ -38,8 +38,8 @@ model Comment {
   postId    String
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   content   String   @db.Text
-  authorId  String?  // Firebase User ID or null for anonymous
-  ipAddress String?  // Optional IP tracking for anonymous moderation
+  authorId  String?  
+  ipAddress String?  
   createdAt DateTime @default(now())
 }
 
@@ -47,7 +47,7 @@ model PostEngagement {
   id        String         @id @default(cuid())
   postId    String
   post      Post           @relation(fields: [postId], references: [id], onDelete: Cascade)
-  ipAddress String         // Hashed IP to prevent double vote for anonymous users
+  ipAddress String         
   type      EngagementType
   createdAt DateTime       @default(now())
 
@@ -68,8 +68,6 @@ model PostAnalytics {
   timestamp      DateTime @default(now())
 }
 
-// User role management can be handled via Custom Claims in Firebase,
-// but we keep a local synched record if we need to expand fields later.
 model User {
   id    String @id @default(cuid())
   email String @unique

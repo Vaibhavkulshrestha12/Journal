@@ -14,7 +14,6 @@ export default function SettingsPage() {
   const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
-    // In a full implementation, this would persist to DB or env
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };

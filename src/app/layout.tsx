@@ -7,14 +7,14 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "JOURNAL. — Digital Frontier",
+  title: "JOURNAL. Digital Frontier",
   description: "Thoughts on code, design, and building production-grade systems. No noise, just high-fidelity insights.",
   icons: {
     icon: "/favicon.ico",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "JOURNAL. — Digital Frontier",
+    title: "JOURNAL. My thoughts on whatever I want to write.",
     description: "Thoughts on code, design, and building production-grade systems.",
     type: "website",
   },
