@@ -29,7 +29,7 @@ export default async function HomePage() {
           </Link>
           <div className="flex items-center gap-4 sm:gap-8 text-[11px] uppercase tracking-[0.2em] font-bold text-zinc-500">
             <Link href="/posts" className="hover:text-white transition-colors">Archive</Link>
-            <Link href="/posts" className="hover:text-white transition-colors hidden sm:inline">About</Link>
+            <Link href="https://www.vaibhavkulshrestha.me/about" className="hover:text-white transition-colors hidden sm:inline">About</Link>
           </div>
         </div>
       </nav>
