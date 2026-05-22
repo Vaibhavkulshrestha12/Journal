@@ -134,13 +134,40 @@ export default async function HomePage() {
               <h2 className="text-xl font-extrabold tracking-tighter italic">JOURNAL.</h2>
             </div>
             <p className="text-zinc-600 text-xs sm:text-sm uppercase tracking-widest font-bold leading-relaxed max-w-xs">
-              Built by Mai yani <strong>Vaibhav</strong> <br /> Focused on even I don't know what.
+              Built by <strong> Vaibhav</strong> <br />
             </p>
           </div>
-          <div className="flex gap-8 sm:gap-12 text-[10px] uppercase tracking-widest font-bold text-zinc-500">
-            <Link href="https://x.com/Vaibhav_1208" target="_blank" className="hover:text-white transition-colors">Twitter (X)</Link>
-            <Link href="https://github.com/vaibhavkulshrestha12" target="_blank" className="hover:text-white transition-colors">GitHub</Link>
-            <Link href="https://www.linkedin.com/in/vaibhav-kulshrestha-053924283" target="_blank" className="hover:text-white transition-colors">LinkedIn</Link>
+          <div className="flex items-center gap-4 sm:gap-5 text-zinc-500">
+            <Link
+              href="https://x.com/Vaibhav_1208"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X / Twitter"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-900 text-2xl transition-colors hover:border-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <i className="devicon-twitter-original" aria-hidden="true" />
+              <span className="sr-only">X / Twitter</span>
+            </Link>
+            <Link
+              href="https://github.com/vaibhavkulshrestha12"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-900 text-2xl transition-colors hover:border-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <i className="devicon-github-original" aria-hidden="true" />
+              <span className="sr-only">GitHub</span>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/vaibhav-kulshrestha-053924283"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-zinc-900 text-2xl transition-colors hover:border-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <i className="devicon-linkedin-plain" aria-hidden="true" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
           </div>
         </div>
       </footer>

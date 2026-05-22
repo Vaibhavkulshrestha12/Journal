@@ -39,6 +39,7 @@
     "axios": "^1.14.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "devicon": "^2.17.0",
     "emoji-picker-react": "^4.18.0",
     "highlight.js": "^11.11.1",
     "lowlight": "^3.3.0",

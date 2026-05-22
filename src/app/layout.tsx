@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "devicon/devicon.min.css";
 import QueryProvider from "@/components/shared/QueryProvider";
 import { Analytics } from "@vercel/analytics/next";
 
